@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Configuration
 public class KeyConfig {
-
     @Bean
     public KeyPair keyPair() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPair = KeyPairGenerator.getInstance("RSA");

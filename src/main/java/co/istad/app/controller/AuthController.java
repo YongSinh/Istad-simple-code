@@ -1,6 +1,8 @@
 package co.istad.app.controller;
 
+import co.istad.app.dto.AuthDto;
 import co.istad.app.dto.LogInDto;
+import co.istad.app.dto.RefreshTokenDto;
 import co.istad.app.service.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +19,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LogInDto logInDto) {
-        String token = authService.login(logInDto);
-        return token;
+    public AuthDto login(@RequestBody LogInDto logInDto) {
+        return authService.login(logInDto);
+    }
+
+    @PostMapping("/refresh")
+    public AuthDto refresh(@RequestBody RefreshTokenDto refreshTokenDto) {
+        return authService.refresh(refreshTokenDto);
     }
 }
